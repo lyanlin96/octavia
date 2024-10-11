@@ -1,0 +1,14 @@
+[Unit]
+Description = Fortiadc Octavia Agent
+
+[Service]
+RestartForceExitStatus = 100
+Restart = always
+ExecStart = %agent_path% --config-file /etc/octavia/octavia.conf --config-file /etc/octavia/fadc_octavia.conf
+ExecReload = /usr/bin/kill -HUP $MAINPID
+TimeoutStopSec = 300
+KillMode = process
+User = stack
+
+[Install]
+WantedBy=multi-user.target

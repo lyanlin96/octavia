@@ -1,0 +1,12 @@
+
+[Unit]
+Description = FortiADC openstack lbaasv2 agent service
+
+[Service]
+KillMode = process
+Type = notify
+ExecStart = /usr/local/bin/fadc-lbaas-agent --config-file /etc/neutron/neutron.conf  --config-file /etc/neutron/services/fadc_lbaas.ini
+SyslogIdentifier = fadc-lbaas-agent.service
+
+[Install]
+WantedBy = multi-user.target
